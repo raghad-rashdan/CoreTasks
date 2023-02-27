@@ -1,0 +1,44 @@
+﻿@model IEnumerable<core__task.Models.Clinic>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: 30%;
+    }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+    .container {
+        padding: 2px 16px;
+    }
+</style>
+<h1>Our Clinic</h1>
+
+<p>
+@*    <a asp-action="Create">Create New</a>
+*@</p>
+
+@foreach (var item in Model) {
+
+    <div class="card">
+                <img src="~/image/@item.ClinicImg" alt="Avatar" style="width:100%;">
+        <div class="container" >
+                    <h4><b>@item.ClinicName</b></h4>
+                    <p>@item.ClinicDis</p>
+@*            <a asp-action="Edit" asp-route-id="@item.ClinicId" class="btn btn-success">Edit</a> |
+*@            <a asp-action="Index" asp-controller="Doctors" asp-route-id="@item.ClinicId" class="btn btn-warning">see doctors</a> 
+@*            <a asp-action="Delete" asp-route-id="@item.ClinicId" class="btn btn-danger">Delete</a>
+*@
+        </div>
+    </div>
+
+}
+
